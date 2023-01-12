@@ -15,19 +15,23 @@ class Trener{
     }
 
     public static function login($username, $password, mysqli $conn){
-        $upit = "select * from korisnik where username= '$username' and password = '$pass' limit 1;";
+        $upit = "select * from trener where username= '$username' and password = '$password' limit 1;";
         return $conn->query($upit);
     }
 
     public static function add($ime, $iskustvo, $username, $password, mysqli $conn){
-        $upit = "insert into korisnik (ime, iskustvo, username, password) values ('$ime', '$iskustvo', '$username', '$password')";
+        $upit = "insert into trener (ime, iskustvo, username, password) values ('$ime', $iskustvo, '$username', '$password')";
         return $conn->query($upit);
     }
 
-    public static function check($username, $conn){
+    public static function check($username, mysqli $conn){
         $upit = "select * from trener where username= '$username'";
         return $conn->query($upit);
 
+    }
+
+    public static function getAll(mysqli $conn){
+        return $conn->query("SELECT ime, iskustvo FROM trener");
     }
 
 

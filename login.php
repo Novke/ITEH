@@ -1,35 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Trio Gym</title>
-  <style>
-    /* CSS for styling the logo */
-    .logo {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .logo img {
-      width: 50%;
-    }
-  </style>
-</head>
-<body>
-  <div class="logo">
-    <img src="trio-gym-logo.png" alt="Trio Gym Logo">
-  </div>
+<?php
 
-  <div class="login-form">
-    <form action="login.php" method="post">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username">
-      <br>
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password">
-      <br><br>
-      <input type="submit" value="Login">
-    </form> 
-  </div>
-</body>
-</html>
+require "dbBroker.php";
+require "model/trener.php";
+require "model/korisnik.php";
+
+session_start();
+
+if(isset($_POST['submit'])){
+
+	$u = $_POST['korisnicko_ime'];
+	$p = $_POST['lozinka'];
+
+  $result = Trener::login($u, $p, $conn);
+
+  if ($result->num_rows != 0){
+    echo "Uspesno ste se prijavili kao trener!";
+    $_SESSION['trener'] = $u;
+    header("Location: homeTrener.php");
+    exit();
+
+  } else {
+    $result = Korisnik::login($u, $p, $conn);
+
+    if ($result->num_rows != 0) {
+      echo "Uspesno ste se prijavili kao korisnik";
+      $_SESSION['korisnik'] = $u;
+      header("Location: index.php");
+      exit();
+    } else {
+      echo "Netacno ime ili lozinka";
+    }
+
+  }
+
+
+}
+
+?>
