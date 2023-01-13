@@ -15,7 +15,7 @@ class Korisnik{
     }
 
     public static function login($username, $password, mysqli $conn){
-        $upit = "select * from korisnik where username= '$username' and password = '$pass' limit 1;";
+        $upit = "select * from korisnik where username= '$username' and password = '$password' limit 1;";
         return $conn->query($upit);
     }
 
