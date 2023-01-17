@@ -22,4 +22,61 @@ if($result->num_rows == 0){
 }
 
 
+
 ?>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dobrodosao, Trener</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="homeTrener.js"></script>
+
+
+    <style>
+      /* Add some styling for the table */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+      }
+      th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center">Lista treninga</h1>
+	<div>
+  <label for="ime">Ime:</label>
+  <input type="text" id="ime" name="ime">
+  <button id="filter-button" style="border: 1px solid white">Isfiltriraj</button>
+
+</div>
+
+    <table id="trainings-table">
+      <tr >
+        <th>Datum</th>
+        <th>Vreme</th>
+        <th>Korisnik</th>
+      </tr>
+      <?php while($row = $result->fetch_assoc()): ?>
+        <tr style="color: white">
+          <td><?= $row['datum'] ?></td>
+          <td><?= $row['vreme'] ?></td>
+          <td><?= $row['ime'] ?></td>
+        </tr>
+      <?php endwhile; ?>
+    </table>
+    <div style="text-align: center; margin-top: 20px;">
+      <form action="logout.php" method="post">
+        <button type="submit">LOG OUT</button>
+      </form>
+    </div>
+  </body>
+</html>

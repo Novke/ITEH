@@ -31,7 +31,7 @@ class Trener{
     }
 
     public static function getAll(mysqli $conn){
-        return $conn->query("SELECT ime, iskustvo FROM trener");
+        return $conn->query("SELECT ime, iskustvo, username FROM trener");
     }
 
 

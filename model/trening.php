@@ -1,6 +1,6 @@
 <?php
 
-public class Trening{
+class Trening{
 
     public $datum;
     public $vreme;
@@ -26,9 +26,9 @@ public function dodaj(mysqli $conn) {  //NIJE STATICKA FUNKCIJA, MOZDA BI BILO B
 public static function jelSlobodno($datum, $vreme, $trener, mysqli $conn){
     $upit = "SELECT COUNT(*)
     FROM trening 
-    WHERE datum = $datum 
+    WHERE datum = '$datum' 
     AND vreme = $vreme 
-    AND trener = $trener;"
+    AND trener = '$trener';";
     $rezultat = $conn->query($upit);
     if ($rezultat === false) {
         return false;
@@ -44,7 +44,15 @@ public static function sveOdTrenera($trener, mysqli $conn){
     FROM trening
     JOIN korisnik ON trening.korisnik = korisnik.username
     WHERE trening.trener = '$trener'
-    ORDER BY trening.datum ASC;"
+    ORDER BY trening.datum ASC;";
+    return $conn->query($upit);
+}
+
+public static function sveOdTreneraFilter($trener, mysqli $conn, $ime){
+    $query = "SELECT trening.datum, trening.vreme, korisnik.ime FROM trening
+JOIN korisnik ON trening.korisnik = korisnik.username WHERE korisnik.ime LIKE '%$ime%'; ";
+
+return $conn->query($query);
 }
 
 public static function sledeciTrening($korisnik, mysqli $conn){
@@ -53,7 +61,7 @@ public static function sledeciTrening($korisnik, mysqli $conn){
             JOIN trener ON trening.trener = trener.username
             WHERE trening.korisnik = '$korisnik'
             ORDER BY trening.datum ASC
-            LIMIT 1;"
+            LIMIT 1;";
     return $conn->query($upit);
 
 }
