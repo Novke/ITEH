@@ -26,6 +26,7 @@ if(isset($_POST['submit'])){
     if ($result->num_rows != 0) {
       echo "<script>alert('Uspesno ste se prijavili kao korisnik!');</script>";
       $_SESSION['korisnik'] = $u;
+      $_SESSION['ime']=Korisnik::vratiIme($u, $conn);
       header("Location: index.php");
       exit();
     } else {
@@ -46,12 +47,12 @@ if(isset($_POST['submit'])){
   <head>
     <title>Konjarnik GYM</title>
     <style>
-      /* Set the background color for the website */
+     
       body {
         background-color: #444654;
       }
       
-      /* Center and move the login container on the page */
+      
       .login-container {
         display: flex;
         flex-direction: column;
@@ -62,13 +63,13 @@ if(isset($_POST['submit'])){
         top:20%;
       }
       
-      /* Position the form element */
+      
       form {
         display: flex;
         align-items: center;
       }
       
-      /* Position the heading */
+      
       h1 {
         font-size: 72px;
         margin-right: 20px;
@@ -76,7 +77,7 @@ if(isset($_POST['submit'])){
         color:white;
       }
 
-      /* Style the arrow */
+      
       h1::after {
         content: "→";
         font-size: 72px;
@@ -85,7 +86,7 @@ if(isset($_POST['submit'])){
         color:white;
       }
       
-      /* Define the animation for color change */
+     
   @keyframes colorchange {
     0% {color: red;}
     33.3% {color: rgb(165, 165, 165);}
@@ -93,27 +94,25 @@ if(isset($_POST['submit'])){
     92% {color: yellow;}
     100% {color: red;}
   }
-
-      /* Style the textfields and button */
      
       input[type="text"], input[type="password"], button {
         padding: 12px 20px;
         margin: 8px 0;
         width: 200px;
         display: inline-block;
-        border: none; /*remove border*/
+        border: none; 
         box-sizing: border-box;
-        background-color: #343541; /* Background color for the textfields and button */
-        color:white; /* text color white*/
+        background-color: #343541; /
+        color:white; 
       }
-      /* Style the logo image */
+     
       img {
-        width: 40%; /* 40% smaller */
+        width: 40%; 
         display: block;
-        margin: 0 auto; /* center the image */
-        align-self: flex-start; /* place the image on top */
+        margin: 0 auto; /* centar*/
+        align-self: flex-start; 
       }
-      /* Style the labels */
+      
       label {
         color: white;
       }

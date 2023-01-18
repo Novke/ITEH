@@ -11,6 +11,9 @@ if (isset($_POST['submit'])) {
     $trener = $_POST['trener'];
     $korisnik = $_SESSION['korisnik'];
 
+    if ($vreme > 22 || $vreme < 10){
+      echo "<script>alert('MOGUCE JE ZAKAZATI SAMO IZMEDJU 10 i 22');</script>";
+    }else {
     
     if (Trening::jelSlobodno($datum, $vreme, $trener, $conn)){
 
@@ -20,6 +23,7 @@ if (isset($_POST['submit'])) {
     } else {
         echo "<script>alert('ZAUZET TERMIN, IZABERI NEKI DRUGI');</script>";
     }
+  }
 }
 
 $treneri = Trener::getAll($conn);
@@ -31,7 +35,7 @@ $treneri = Trener::getAll($conn);
     <title>Zakazi trening</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
-      /* Center the form on the page */
+      /* Centriranje forme */
       form {
         display: flex;
         flex-direction: column;
@@ -39,14 +43,14 @@ $treneri = Trener::getAll($conn);
         justify-content: center;
         height: 100vh;
       }
-      /* Align the text fields and dropdown menu within the form */
+      /* textfieldovi da budu na istoj osi */
       input[type="text"], input[type="date"], select {
         margin: 8px 0;
         width: 20%;
         height: 5%;
         font-size: 1.8em;
       }
-      /* Make all text bold and 60% larger */
+      /* Uvecanje fonta */
       label {
         font-size: 1.6em;
         font-weight: bold;

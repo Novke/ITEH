@@ -78,7 +78,7 @@ if ($treneri->num_rows == 0){
     <div class="container">
         <img src="logoKonjarnik.png" alt="logo">
         <div class="text-block">
-		<p>Dobrodosli <?php echo $kor;?>!<br>Elitna teretana Konjarnik svojim clanovima pruza maksimalnu satisfakciju rada na najkvalitetnijim masinama, dobro osvezene prostorije i najzgodnije dame na istocnoj strani Beograda!<br> Zakazite svoj trening odmah!</p>
+		<p><?php echo date('Y-m-d H:i:s');?><br> Dobrodosli  <?php echo $kor; ?>!<br>Elitna teretana Konjarnik svojim clanovima pruza maksimalnu satisfakciju rada na najkvalitetnijim masinama, dobro osvezene prostorije i najzgodnije dame na istocnoj strani Beograda!<br> Zakazite svoj trening odmah!</p>
     <table>
       <tr>
         <th>Datum</th>
@@ -105,52 +105,52 @@ if ($treneri->num_rows == 0){
 </div>
 </div>
 <style>
-  /* Add styles for the table */
+  
   table {
-    width: 80%; /* Set table width to 80% */
-    margin: 0 auto; /* Center the table */
-    border-collapse: collapse; /* Remove cell spacing */
+    width: 80%; 
+    margin: 0 auto; 
+    border-collapse: collapse; 
   }
-  /* Add styles for the table headings */
+  
   th {
-    background-color: #343541; /* Set background color */
-    color: white; /* Set text color */
-    padding: 10px; /* Add padding */
-    text-align: left; /* Align text left */
+    background-color: #343541; 
+    color: white; 
+    padding: 10px; 
+    text-align: left; 
   }
-  /* Add styles for the table cells */
+ 
   td {
-    background-color: #444654; /* Set background color */
-    color: white; /* Set text color */
-    padding: 10px; /* Add padding */
+    background-color: #444654; 
+    color: white; 
+    padding: 10px; 
   }
-  /* Add styles for the button */
+  
   button {
-    background-color: #343541; /* Set background color */
-    color: white; /* Set text color */
-    padding: 10px 20px; /* Add padding */
-    margin: 10px 0; /* Add margin */
-    border: none; /* Remove border */
-    cursor: pointer; /* Add cursor pointer */
+    background-color: #343541; 
+    color: white; 
+    padding: 10px 20px; 
+    margin: 10px 0; 
+    border: none; 
+    cursor: pointer; 
   }
-  /* Add styles for the button when hovered */
+  
   button:hover {
-    background-color: #444654; /* Change background color on hover */
+    background-color: #444654; 
   }
-  /* Add styles for the container */
+  
   .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
-  /* Add styles for the text */
+  /* stilizacija teksta*/
   p {
     font-size: 1.6em;
     text-align: center;
     margin: 20px 0;
   }
-  /* Add styles for the button container */
+  /
   .btns {
     display: flex;
     justify-content: center;

@@ -50,7 +50,7 @@ public static function sveOdTrenera($trener, mysqli $conn){
 
 public static function sveOdTreneraFilter($trener, mysqli $conn, $ime){
     $query = "SELECT trening.datum, trening.vreme, korisnik.ime FROM trening
-JOIN korisnik ON trening.korisnik = korisnik.username WHERE korisnik.ime LIKE '%$ime%'; ";
+JOIN korisnik ON trening.korisnik = korisnik.username WHERE korisnik.ime LIKE '%$ime%' AND trening.trener = '$trener'; ";
 
 return $conn->query($query);
 }

@@ -35,7 +35,6 @@ if($result->num_rows == 0){
 
 
     <style>
-      /* Add some styling for the table */
       table {
         width: 100%;
         border-collapse: collapse;
@@ -60,7 +59,7 @@ if($result->num_rows == 0){
 </div>
 
     <table id="trainings-table">
-      <tr >
+      <tr style="color: black">
         <th>Datum</th>
         <th>Vreme</th>
         <th>Korisnik</th>

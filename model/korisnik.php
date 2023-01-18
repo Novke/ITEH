@@ -29,6 +29,10 @@ class Korisnik{
         return $conn->query($upit);
     }
 
+    public static function vratiIme($username, mysqli $conn){
+        $upit = "select ime from korisnik where username = '$username';";
+        return $conn->query($upit);
+    }
 
 
 }
