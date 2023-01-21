@@ -3,6 +3,7 @@
 require "dbBroker.php";
 require "model/trener.php";
 require "model/korisnik.php";
+require "model/trening.php";
 
 session_start();
 
@@ -11,6 +12,7 @@ if(isset($_POST['submit'])){
   $u = $_POST['username'];
   $p = $_POST['password'];
   
+  Trening::ocisti($conn);
 
   $result = Trener::login($u, $p, $conn);
 

@@ -71,6 +71,12 @@ public static function otkaziTrening($trener, $datum, $vreme, mysqli $conn){
     return $conn->query($upit);
 }
 
+public static function ocisti(mysqli $conn){
+    $current_date = date('Y-m-d');
+    $query = "DELETE FROM trening WHERE datum < '$current_date'";
+    $conn->query($query);
+}
+
 // public function otkaziTrening(mysqli $conn) {
 //     $upit = "DELETE FROM trening WHERE trener = '$this->trener' AND datum = '$this->datum' AND vreme = $this->vreme";
 //     return $conn->query($upit);

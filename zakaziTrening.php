@@ -6,25 +6,28 @@ session_start();
 
 
 if (isset($_POST['submit'])) {
-    $datum = $_POST['datum'];
-    $vreme = $_POST['vreme'];
-    $trener = $_POST['trener'];
-    $korisnik = $_SESSION['korisnik'];
+  $datum = $_POST['datum'];
+  $vreme = $_POST['vreme'];
+  $trener = $_POST['trener'];
+  $korisnik = $_SESSION['korisnik'];
 
-    if ($vreme > 22 || $vreme < 10){
-      echo "<script>alert('MOGUCE JE ZAKAZATI SAMO IZMEDJU 10 i 22');</script>";
-    }else {
-    
-    if (Trening::jelSlobodno($datum, $vreme, $trener, $conn)){
-
-    $trening = new Trening($datum, $vreme, $trener, $korisnik);
-    $trening->dodaj($conn);
-    header("location: index.php");
-    } else {
-        echo "<script>alert('ZAUZET TERMIN, IZABERI NEKI DRUGI');</script>";
-    }
+  if(empty($datum)) {
+    echo "<script>alert('Molimo odaberite datum!');</script>";
+  } else if (strtotime($datum) < strtotime('now')) {
+      echo "<script>alert('Datum ne moze biti pre danasnjeg');</script>";
+  } else if ($vreme > 22 || $vreme < 10){
+    echo "<script>alert('MOGUCE JE ZAKAZATI SAMO IZMEDJU 10 i 22');</script>";
+  } else {
+      if (Trening::jelSlobodno($datum, $vreme, $trener, $conn)){
+      $trening = new Trening($datum, $vreme, $trener, $korisnik);
+      $trening->dodaj($conn);
+      header("location: index.php");
+  } else {
+      echo "<script>alert('ZAUZET TERMIN, IZABERI NEKI DRUGI');</script>";
   }
 }
+}
+
 
 $treneri = Trener::getAll($conn);
 ?>

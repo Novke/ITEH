@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
   <link rel="stylesheet" type="text/css" href="styles.css">
   <style>
    
-    /* Center the form on the page */
+    
     form {
       margin-left: -35%;
       display: flex;
@@ -55,14 +55,14 @@ if(isset($_POST['submit'])){
       justify-content: center;
       height: 100vh;
     }
-    /* Align the text fields within the form */
+   
     input[type="text"], input[type="password"], input[type="email"] {
       margin: 8px 0;
       width: 20%;
       height: 5%;
       font-size: 1.8em;
     }
-    /* Make all text bold and 60% larger */
+    
     label {
       font-size: 1.6em;
       font-weight: bold;
@@ -71,7 +71,7 @@ if(isset($_POST['submit'])){
     input[type="submit"] {
       font-size: 1.4em;
     }
-     /* Add background image */
+     
      body {
       background-image: url('pozadinaRegister.png');
       background-repeat: no-repeat;
